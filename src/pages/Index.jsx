@@ -1,23 +1,37 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
-const SimplePage = () => {
+const HomePage = () => {
   const [count, setCount] = useState(0);
 
+  const incrementCount = () => {
+    setCount(prevCount => prevCount + 1);
+  };
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">Simple Counter</h1>
+    <div className="min-h-screen flex flex-col">
+      <header className="bg-gray-800 text-white p-4">
+        <h1 className="text-2xl font-bold">My Counter App</h1>
       </header>
-      
-      <Button 
-        onClick={() => setCount(count + 1)}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        Clicked {count} times
-      </Button>
+
+      <main className="flex-grow p-4">
+        <Card className="mb-4">
+          <CardHeader>
+            <CardTitle>Counter</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl mb-4">Count: {count}</p>
+            <Button onClick={incrementCount}>Increment</Button>
+          </CardContent>
+        </Card>
+      </main>
+
+      <footer className="bg-gray-200 p-4 text-center">
+        <p>&copy; 2023 My Counter App. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
 
-export default SimplePage;
+export default HomePage;
