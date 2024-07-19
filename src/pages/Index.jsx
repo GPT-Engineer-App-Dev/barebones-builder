@@ -1,32 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
-const HomePage = () => {
+const SimplePage = () => {
+  const [count, setCount] = useState(0);
+
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="bg-gray-800 text-white p-4">
-        <h1 className="text-2xl font-bold">My Application</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-800">Simple Counter</h1>
       </header>
-
-      <main className="flex-grow p-4">
-        <Card className="mb-4">
-          <CardHeader>
-            <CardTitle>Welcome</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p>This is a bare-bones application that you can modify and build on.</p>
-          </CardContent>
-        </Card>
-
-        <Button>Click me</Button>
-      </main>
-
-      <footer className="bg-gray-200 p-4 text-center">
-        <p>&copy; 2023 My Application. All rights reserved.</p>
-      </footer>
+      
+      <Button 
+        onClick={() => setCount(count + 1)}
+        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Clicked {count} times
+      </Button>
     </div>
   );
 };
 
-export default HomePage;
+export default SimplePage;
